@@ -47,11 +47,11 @@
             </div><br><br>
             <div class="alert alert-dark text-center" id = "containerIntro">
                 <h5 class="alert-heading" style="display: inline;vertical-align: top;font-family: 'Open Sans', sans-serif;font-size: 16px;line-height: 28px;">Key used is : </h5>
-                <input type="text" value="{{ code }}" id="copyMe"  style="display: inline;vertical-align: top;font-family: 'Open Sans', sans-serif;font-size: 16px;line-height: 28px;" readonly>
+                <input type="text" value="{{ key }}" id="copyMe"  style="display: inline;vertical-align: top;font-family: 'Open Sans', sans-serif;font-size: 16px;line-height: 28px;" readonly>
                 <button onclick="copyMyText()" class="btn btn-primary">Copy</button><br>
                 <br><br>
                 <h5 class="alert-heading" style="display: inline;vertical-align: top;font-family: 'Open Sans', sans-serif;font-size: 16px;line-height: 28px;"> Decrypted JSON File: </h5>
-                <button onclick="copyMyText()" class="btn btn-primary">Download</button><br>
+                <a href="/download/{{file_name}}"><button class="btn btn-primary">Download</button></a><br>
             </div>
             <br><br>
             <div class="alert alert-primary text-center" role="alert">

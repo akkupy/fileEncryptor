@@ -58,8 +58,37 @@ def download(id):
                     jsondata = file.read()
     return send_file(BytesIO(jsondata),download_name=id,as_attachment=True)
 
-@app.route('/decrypt',methods=['GET'])
+@app.route('/decrypt',methods=['GET','POST'])
 def decrypt():
+    if request.method == 'POST':
+        key = request.values.get('key')
+        jsondata = request.values.get('jsonarea')
+        if jsondata == '':
+            if 'encfile' in request.files:
+                f = request.files['encfile']
+                f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
+                with open(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)),'rb') as file:
+                    jsondata = file.read()
+        else:
+            jsondata = bytes(jsondata,'utf-8')
+
+        try:
+            json.loads(jsondata)
+            return render_template('error.html',fail='Input is already in JSON Format!')
+        except:
+            
+            try:
+                dec_data = assets.decrypt(key,jsondata)
+            except:
+                return render_template('error.html',fail='Incorrect Decryption Key')
+            f = request.files['encfile']
+            if f.filename == '':
+                output_file_name = 'encJSON-'+assets.string_generator()+'.json'
+            else:
+                output_file_name = f.filename
+            with open(os.path.join(app.config['UPLOAD_FOLDER'], output_file_name),'wb') as file:
+                file.write(dec_data)
+            return render_template('decrypt_success.html',file_name=output_file_name,key=key)
     return render_template('decrypt.html')
 
 if __name__ == '__main__':
