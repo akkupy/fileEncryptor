@@ -39,7 +39,6 @@
                  textToCopy.select();
                  //copy the text to the clipboard
                  document.execCommand("copy");
-                 alert("The Unique ID is Copied!");
             }
         </script>
             <div class="alert alert-success text-center">
@@ -48,7 +47,7 @@
             <div class="alert alert-dark text-center" id = "containerIntro">
                 <h5 class="alert-heading" style="display: inline;vertical-align: top;font-family: 'Open Sans', sans-serif;font-size: 16px;line-height: 28px;">Key used is : </h5>
                 <input type="text" value="{{ key }}" id="copyMe"  style="display: inline;vertical-align: top;font-family: 'Open Sans', sans-serif;font-size: 16px;line-height: 28px;" readonly>
-                <button onclick="copyMyText()" class="btn btn-primary">Copy</button><br>
+                <button onclick="copyMyText()" id="btn" class="btn btn-primary">Copy</button><br>
                 <br><br>
                 <h5 class="alert-heading" style="display: inline;vertical-align: top;font-family: 'Open Sans', sans-serif;font-size: 16px;line-height: 28px;"> Decrypted JSON File: </h5>
                 <a href="/download/{{file_name}}"><button class="btn btn-primary">Download</button></a><br>
@@ -64,5 +63,11 @@
             
         
     </div>
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', function handleClick() {
+        btn.textContent = 'Copied';
+        });
+    </script>
 </body>
 </html>
