@@ -38,6 +38,7 @@ def encrypt():
         try:
             json.loads(jsondata)
         except:
+            os.remove(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
             return render_template('error.html',fail='Invalid JSON Format')
         
         enc_data = assets.encrypt(key,jsondata)
@@ -45,7 +46,7 @@ def encrypt():
         if f.filename == '':
             output_file_name = 'encJSON-'+assets.string_generator()+'.json'
         else:
-            output_file_name = f.filename
+            output_file_name = secure_filename(f.filename)
         with open(os.path.join(app.config['UPLOAD_FOLDER'], output_file_name),'wb') as file:
             file.write(enc_data)
         return render_template('encrypt_success.html',file_name=output_file_name,key=key)
@@ -56,6 +57,7 @@ def encrypt():
 def download(id):
     with open(os.path.join(app.config['UPLOAD_FOLDER'], id),'rb') as file:
                     jsondata = file.read()
+    os.remove(os.path.join(app.config['UPLOAD_FOLDER'], id))
     return send_file(BytesIO(jsondata),download_name=id,as_attachment=True)
 
 @app.route('/decrypt',methods=['GET','POST'])
@@ -74,6 +76,7 @@ def decrypt():
 
         try:
             json.loads(jsondata)
+            os.remove(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
             return render_template('error.html',fail='Input is already in JSON Format!')
         except:
             
