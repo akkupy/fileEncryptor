@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/936/PNG/512/bitcoin-logo_icon-icons.com_73658.png" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>JSON Encryptor</title>
+    <style>
+        .bg1 {
+            background-color: #dcdde1;
+            padding-top: 5%;
+            padding-bottom: 31%;
+        }
+    </style>
+</head>
+<body>
+    <nav class='navbar navbar-expand-lg navbar-dark bg-dark justify-content-between'>
+        <a href="https://akkupy.me" class="navbar-brand p-2" style="font-size: 2vw;">Akkupy</a>
+        <ul class="navbar-nav">
+            <li class="nav-item mr-2">
+                <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item mr-2">
+                <a href="/encrypt" class="nav-link">Encrypt</a>
+            </li>
+            <li class="nav-item mr-2">
+                <a href="/decrypt" class="nav-link">Decrypt</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid bg1">
+        <div class="text-center">
+            <h3>JSON Encryptor</h3>
+        </div>
+        <div class="row">
+            <div class="col mx-auto">
+                <div class="card mx-auto text-center my-5">
+                    <form method="POST" action="/encrypt" enctype = "multipart/form-data" class="form-signin p-3">
+                        <br>
+                        <input style="width: 50%;" type="text" name="key" placeholder="Enter the Key / Password to use." required><br><br>
+                        <textarea style="width: 50%; overflow: hidden; resize: none;" type="textarea" id="autoresizing" rows="6" name="jsonarea" placeholder="Paste the json code here."></textarea><br>OR<br>
+                        <input style="border: 1px solid black; width:50%" type="file" name="jsonfile" accept="application/json"><br><br>
+                        <!-- <button type="submit" class="btn btn-primary btn-lg">Encrypt</button> -->
+                        <input type="submit" class="btn btn-primary btn-lg">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        textarea = document.querySelector("#autoresizing");
+        textarea.addEventListener('input', autoResize, false);
+ 
+        function autoResize() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        }
+    </script>
+</body>
+</html>
