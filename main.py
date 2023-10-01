@@ -9,7 +9,7 @@ from io import BytesIO
 app = Flask(__name__, template_folder='./templates')
 
 path = os.getcwd()
-UPLOAD_FOLDER = os.path.join(path, 'json')
+UPLOAD_FOLDER = os.path.join(path, 'tmp')
 
 if not os.path.isdir(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
