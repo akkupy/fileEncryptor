@@ -91,7 +91,7 @@ def decrypt():
             if f.filename == '':
                 output_file_name = 'encJSON-'+assets.string_generator()+'.json'
             else:
-                output_file_name = f.filename
+                output_file_name = secure_filename(f.filename)
             with open(os.path.join(app.config['UPLOAD_FOLDER'], output_file_name),'wb') as file:
                 file.write(dec_data)
             return render_template('decrypt_success.html',file_name=output_file_name,key=key)
