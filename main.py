@@ -89,7 +89,7 @@ def decrypt():
                 return render_template('error.html',fail='Incorrect Decryption Key')
             f = request.files['encfile']
             if f.filename == '':
-                output_file_name = 'encJSON-'+assets.string_generator()+'.json'
+                output_file_name = 'decJSON-'+assets.string_generator()+'.json'
             else:
                 output_file_name = secure_filename(f.filename)
             with open(os.path.join(app.config['UPLOAD_FOLDER'], output_file_name),'wb') as file:
