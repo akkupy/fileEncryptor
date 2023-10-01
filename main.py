@@ -19,6 +19,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/', methods=['GET'])
 def home():
+    count = assets.count_files_in_directory(app.config['UPLOAD_FOLDER'])
+    if count > 10:
+        status = assets.delete_files_in_directory(app.config['UPLOAD_FOLDER'])
     return render_template('index.html')
 
 @app.route('/encrypt',methods=['GET','POST'])
