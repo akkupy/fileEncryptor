@@ -9,8 +9,8 @@ from io import BytesIO
 app = Flask(__name__, template_folder='./templates')
 
 # TEMP FILE PATH
-path = os.getcwd()
-UPLOAD_FOLDER = os.path.join(path, 'tmp')
+
+UPLOAD_FOLDER = '/tmp/'
 
 if not os.path.isdir(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
