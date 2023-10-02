@@ -27,6 +27,12 @@ def home():
 
     return render_template('home.html')
 
+# 404 Page
+
+@app.errorhandler(404)
+def not_found(e):
+  return render_template("404.html")
+
 # Download File
 
 @app.route('/download/<id>')
