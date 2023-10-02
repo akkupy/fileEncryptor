@@ -43,7 +43,7 @@ def download(id):
 # JSON
 
 @app.route('/json', methods=['GET'])
-def json():
+def Json():
     return render_template('json.html')
 
 @app.route('/jsonEncrypt',methods=['GET','POST'])
@@ -119,7 +119,7 @@ def jsonDecrypt():
 
 
 @app.route('/text', methods=['GET'])
-def text():
+def Text():
     return render_template('text.html')
 
 @app.route('/textEncrypt',methods=['GET','POST'])
