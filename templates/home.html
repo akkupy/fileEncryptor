@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +50,7 @@
     
     <title>File Encryptor</title>
 
+
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .bg1 {
@@ -66,20 +68,25 @@
                 <a href="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item mr-2">
-                <a href="/encrypt" class="nav-link">Encrypt</a>
+                <a href="/text" class="nav-link">Text</a>
             </li>
             <li class="nav-item mr-2">
-                <a href="/decrypt" class="nav-link">Decrypt</a>
+                <a href="/json" class="nav-link">Json</a>
             </li>
         </ul>
     </nav>
 
     <div class="container-fluid bg1">
-        <div class="alert alert-danger text-center">
-            <h3 class="alert-heading">{{ fail }}</h3>
+        <div class="jumbotron text-left">
+            <center>
+            <h1 class="display-4">File Encryptor / Decryptor</h1>
+            <p class="lead my-4">Use this tool to encrypt or decrypt Text , JSON files.
+            </p>
+            </center>
         </div>
         <div class="text-center">
-            <button onclick="location.href='/'" type="button" class="btn btn-dark btn-lg">Home</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onclick="location.href='/text'" type="button" class="btn btn-dark btn-lg">Text</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onclick="location.href='/json'" type="button" class="btn btn-dark btn-lg">Json</button><br>
         </div>
     </div>
 </body>

@@ -11,18 +11,18 @@
     <meta name="author" content="Akkupy">
     <meta name="theme-color" content="#294572" />
 
-    <meta name="title" content="File Encryptor">
-    <meta name="description" content="Encrypt the sensitive information present in the Text, JSON files for secure transfers!">
+    <meta name="title" content="JSON Encryptor">
+    <meta name="description" content="Encrypt the sensitive information present in the JSON files for secure transfers!">
     <meta name="keywords" itemProp="keywords"
-            content="json encryptor, text encryptor, textencryptor, Text Encryptor, TEXTENCRYPTOR, jsonencryptor, JSON, JSON Encryptor, Akkupy, akkupy, JSONENCRYPTOR, JSON encryptor" />
+            content="json encryptor, jsonencryptor, JSON, JSON Encryptor, Akkupy, akkupy, JSONENCRYPTOR, JSON encryptor" />
     
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://encryptor.akkupy.me/">
-    <meta property="og:title" content="File Encryptor">
+    <meta property="og:url" content="https://encryptor.akkupy.me/json">
+    <meta property="og:title" content="JSON Encryptor">
     <meta property="og:description" 
-        content="Encrypt the sensitive information present in the Text, JSON files for secure transfers!">
+        content="Encrypt the sensitive information present in the JSON files for secure transfers!">
     <meta name="image" property="og:image" content="https://raw.githubusercontent.com/akkupy/akkupy/main/assets/encryptor.png">
-    <meta property="og:site_name" content="File Encryptor">
+    <meta property="og:site_name" content="Json Encryptor">
     
     <link rel="icon" type="image/x-icon" sizes="144x144" href="https://raw.githubusercontent.com/akkupy/akkupy/main/assets/favicon/android-chrome-192x192.ico">
     <link rel="icon" type="image/x-icon" sizes="288x288" href="https://raw.githubusercontent.com/akkupy/akkupy/main/assets/favicon/favicon-288x288.ico">
@@ -35,19 +35,20 @@
     <link rel="icon" type="image/x-icon" sizes="256x256" href="https://raw.githubusercontent.com/akkupy/akkupy/main/assets/favicon/favicon-256x256.ico">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="180x180" href="https://raw.githubusercontent.com/akkupy/akkupy/main/assets/favicon/apple-touch-icon.ico">
 
-    <link rel="canonical" href="https://encryptor.akkupy.me/">
+    <link rel="canonical" href="https://encryptor.akkupy.me/json">
         
         
     <meta name="twitter:card" property="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" property="twitter:title" content="File Encryptor">
-    <meta name="twitter:description" property="twitter:description" content="Encrypt the sensitive information present in the Text, JSON files for secure transfers!">
+    <meta name="twitter:title" property="twitter:title" content="JSON Encryptor">
+    <meta name="twitter:description" property="twitter:description" content="Encrypt the sensitive information present in the JSON files for secure transfers!">
     <meta name="twitter:image" property="twitter:image" content="https://raw.githubusercontent.com/akkupy/akkupy/main/assets/encryptor.png">
-    <meta name="twitter:url" property="twitter:url" content="https://encryptor.akkupy.me">
+    <meta name="twitter:url" property="twitter:url" content="https://encryptor.akkupy.me/json">
     <meta name="twitter:creator" property="twitter:creator" content="@akkupy">
         
     <script>"Apple Computer, Inc."===navigator.vendor&&document.documentElement.classList.add("safari")</script>
     
-    <title>File Encryptor</title>
+    <title>JSON Encryptor</title>
+
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -66,21 +67,42 @@
                 <a href="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item mr-2">
-                <a href="/encrypt" class="nav-link">Encrypt</a>
+                <a href="/jsonEncrypt" class="nav-link">Encrypt</a>
             </li>
             <li class="nav-item mr-2">
-                <a href="/decrypt" class="nav-link">Decrypt</a>
+                <a href="/jsonDecrypt" class="nav-link">Decrypt</a>
             </li>
         </ul>
     </nav>
 
     <div class="container-fluid bg1">
-        <div class="alert alert-danger text-center">
-            <h3 class="alert-heading">{{ fail }}</h3>
-        </div>
         <div class="text-center">
-            <button onclick="location.href='/'" type="button" class="btn btn-dark btn-lg">Home</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <h3>JSON Decryptor</h3>
+        </div>
+        <div class="row">
+            <div class="col mx-auto">
+                <div class="card mx-auto text-center my-5">
+                    <form method="post" action="/decrypt" enctype = "multipart/form-data" class="form-signin p-3">
+                        <br>
+                        <input style="width: 50%;" type="text" name="key" placeholder="Enter the Key / Password." required><br><br>
+                        <textarea style="width: 50%; overflow: hidden; resize: none;" type="textarea" id="autoresizing" rows="6" name="jsonarea" placeholder="Paste the Encrypted Text here."></textarea><br>OR<br>
+                        <input style="border: 1px solid black; width:50%" type="file" name="encfile" accept="application/json"><br><br>
+                        <!-- <button type="submit" class="btn btn-primary btn-lg">Encrypt</button> -->
+                        <input type="submit" class="btn btn-primary btn-lg">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        textarea = document.querySelector("#autoresizing");
+        textarea.addEventListener('input', autoResize, false);
+ 
+        function autoResize() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        }
+    </script>
 </body>
 </html>
