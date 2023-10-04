@@ -57,10 +57,12 @@ def jsonEncrypt():
     if request.method == 'POST':
         key = request.values.get('key')
         jsondata = request.values.get('jsonarea')
+        flag = False
         if jsondata == '':
             if 'jsonfile' in request.files:
                 f = request.files['jsonfile']
                 f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
+                flag = True
                 with open(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)),'rb') as file:
                     jsondata = file.read()
         else:
@@ -69,7 +71,8 @@ def jsonEncrypt():
         try:
             json.loads(jsondata)
         except:
-            os.remove(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
+            if flag:
+                os.remove(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
             return render_template('error.html',fail='Invalid JSON Format')
         
         enc_data = assets.encrypt(key,jsondata)
@@ -90,10 +93,12 @@ def jsonDecrypt():
     if request.method == 'POST':
         key = request.values.get('key')
         jsondata = request.values.get('jsonarea')
+        flag = False
         if jsondata == '':
             if 'encfile' in request.files:
                 f = request.files['encfile']
                 f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
+                flag = True
                 with open(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)),'rb') as file:
                     jsondata = file.read()
         else:
@@ -101,7 +106,8 @@ def jsonDecrypt():
 
         try:
             json.loads(jsondata)
-            os.remove(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
+            if flag:
+                os.remove(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
             return render_template('error.html',fail='Input is already in JSON Format!')
         except:
             
