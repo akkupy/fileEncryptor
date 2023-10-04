@@ -14,5 +14,5 @@
 
 ## Live Site
 
-[encryptor.akkupy.me](https://encryptor.akkupy.me)
+[encryptor.akkupy.me](https://filencryptor.tech)
 
